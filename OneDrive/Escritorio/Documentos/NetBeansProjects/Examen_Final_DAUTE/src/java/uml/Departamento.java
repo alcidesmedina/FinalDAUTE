@@ -60,9 +60,14 @@ public class Departamento implements Serializable {
         this.idDepartamento = idDepartamento;
     }
 
-    Departamento(int idDepartamento, String nombreDepto, int cantEmpleados, Telefono codTels) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Departamento(Integer idDepartamento, String nombreDepto, Integer cantEmpleados, int codTels) {
+        this.idDepartamento = idDepartamento;
+        this.nombreDepto = nombreDepto;
+        this.cantEmpleados = cantEmpleados;
+        this.codTels = new Telefono(codTels);
     }
+
+    
 
     public Integer getIdDepartamento() {
         return idDepartamento;

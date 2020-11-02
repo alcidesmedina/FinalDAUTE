@@ -24,13 +24,13 @@ public class EmpleadoMBean {
     public EmpleadoMBean() {
     }    
     
-    int codEmpleado; 
-    String nombres; 
-    String apellidos; 
-    Departamento idDepartamento; 
-    double salario; 
-    int edad; 
-    Usuarios idUsuario; 
+    private int codEmpleado; 
+    private String nombres; 
+    private String apellidos; 
+    private int idDepartamento; 
+    private Float salario; 
+    private int edad; 
+    private int idUsuario; 
 
     public int getCodEmpleado() {
         return codEmpleado;
@@ -56,19 +56,19 @@ public class EmpleadoMBean {
         this.apellidos = apellidos;
     }
 
-    public Departamento getIdDepartamento() {
+    public int getIdDepartamento() {
         return idDepartamento;
     }
 
-    public void setIdDepartamento(Departamento idDepartamento) {
+    public void setIdDepartamento(int idDepartamento) {
         this.idDepartamento = idDepartamento;
     }
 
-    public double getSalario() {
+    public Float getSalario() {
         return salario;
     }
 
-    public void setSalario(double salario) {
+    public void setSalario(Float salario) {
         this.salario = salario;
     }
 
@@ -80,11 +80,11 @@ public class EmpleadoMBean {
         this.edad = edad;
     }
 
-    public Usuarios getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Usuarios idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
     
@@ -105,7 +105,7 @@ public class EmpleadoMBean {
     {
         try {
             EmpleadoJpaController ctrl = new EmpleadoJpaController();
-            ctrl.edit(new Empleado(codEmpleado, nombres, apellidos, Float.NaN, edad, idDepartamento, idUsuario));
+            ctrl.edit(new Empleado(codEmpleado,nombres,apellidos,salario,edad,idDepartamento,idUsuario));
         } catch (Exception e) {
             System.out.print(e);
         }
@@ -125,7 +125,7 @@ public class EmpleadoMBean {
     {
         try {
             EmpleadoJpaController ctrl = new EmpleadoJpaController();
-            ctrl.create(new Empleado(codEmpleado, nombres, apellidos, Float.NaN, edad, idDepartamento, idUsuario));
+            ctrl.create(new Empleado(codEmpleado,nombres,apellidos,salario,edad,idDepartamento,idUsuario));
         } catch (Exception e) {
             System.out.print(e);
         }

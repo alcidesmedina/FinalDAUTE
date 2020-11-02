@@ -7,7 +7,7 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>TELEFONO</title>
+        <title>USUARIOS</title>
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></link>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -16,18 +16,20 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         
         <script>
-            function cargar(id,nom,des)
+            function cargar(id,us,contra,lvl)
             {
-                document.getElementById('myForm:idcod').value=id; 
-                document.getElementById('myForm:tel').value=nom; 
-                document.getElementById('myForm:teldes').value=des; 
+                document.getElementById('myForm:idus').value=id; 
+                document.getElementById('myForm:user').value=us; 
+                document.getElementById('myForm:contra').value=contra; 
+                document.getElementById('myForm:txtlvl').value=lvl; 
             }
             
             function limpiar()
             {
-                document.getElementById('myForm:idcod').value= null; 
-                document.getElementById('myForm:tel').value= null; 
-                document.getElementById('myForm:teldes').value= null; 
+                document.getElementById('myForm:idus').value= null; 
+                document.getElementById('myForm:user').value= null; 
+                document.getElementById('myForm:contra').value= null; 
+                document.getElementById('myForm:txtlvl').value=null; 
             }
         </script>
     </h:head>
@@ -42,17 +44,18 @@
         </nav>
 
         <center>
-            <h2>Formulario Mantenimiento Tabla Teléfonos</h2><hr></hr>
+            <h2>Formulario Mantenimiento Tabla Usuarios</h2><hr></hr>
             
             <div style="width: 35%">
                 <h:form id="myForm" class="form-group">
-                    Código Teléfono : <h:inputText class="form-control" value="#{telefonoMBean.codTels}" id="idcod"></h:inputText><br></br>        
-                    Teléfono : <h:inputText class="form-control"  value="#{telefonoMBean.telefono}" id="tel"></h:inputText><br></br>
-                    Descripción : <h:inputText class="form-control"  value="#{telefonoMBean.telDescrip}" id="teldes"></h:inputText>
+                    ID Usuario : <h:inputText class="form-control" value="#{usuariosMBean.idusuario}" id="idus"></h:inputText><br></br>        
+                    Usuario : <h:inputText class="form-control"  value="#{usuariosMBean.usuario}" id="user"></h:inputText><br></br>
+                    Contraseña : <h:inputSecret class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputSecret>
+                    Nivel : <h:inputText class="form-control"  value="#{usuariosMBean.nivel}" id="txtlvl"></h:inputText>
                     <br></br><br></br>
-                    <h:commandButton class="btn btn-success" action="#{telefonoMBean.agregar()}" value="Agregar"></h:commandButton>
-                    <h:commandButton class="btn btn-info" action="#{telefonoMBean.modificar()}" value="Modificar"></h:commandButton>
-                    <h:commandButton class="btn btn-danger" action="#{telefonoMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
+                    <h:commandButton class="btn btn-success" action="#{usuariosMBean.agregar()}" value="Agregar"></h:commandButton>
+                    <h:commandButton class="btn btn-info" action="#{usuariosMBean.modificar()}" value="Modificar"></h:commandButton>
+                    <h:commandButton class="btn btn-danger" action="#{usuariosMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
                     <h:commandButton class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
                 </h:form>
             </div>
@@ -61,25 +64,30 @@
             <hr></hr>
             
             <div style="width: 700px; position: relative;">
-                <h:dataTable class="table" value="#{telefonoMBean.tabla}" var="tel">
+                <h:dataTable class="table" value="#{usuariosMBean.tabla}" var="user">
                     <h:column>
-                        <f:facet name="header">CODIGO TELEFONO</f:facet>
-                        <h:outputText value="#{tel.codTels}"></h:outputText>
+                        <f:facet name="header">ID USUARIO</f:facet>
+                        <h:outputText value="#{user.idusuario}"></h:outputText>
                     </h:column>
 
                     <h:column>
-                        <f:facet name="header">TELEFONO</f:facet>
-                        <h:outputText value="#{tel.telefono}"></h:outputText>
+                        <f:facet name="header">USUARIO</f:facet>
+                        <h:outputText value="#{user.usuario}"></h:outputText>
                     </h:column>
 
                     <h:column>
-                        <f:facet name="header">DESCRIPCION</f:facet>
-                        <h:outputText value="#{tel.telDescrip}"></h:outputText>
+                        <f:facet name="header">CONTRASEÑA</f:facet>
+                        <h:outputText value="#{user.contra}"></h:outputText>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">NIVEL</f:facet>
+                        <h:outputText value="#{user.nivel}"></h:outputText>
                     </h:column>
 
                     <h:column>
                         <f:facet name="header">SELECCIONAR</f:facet>
-                        <a href="javascript:cargar('#{tel.codTels}','#{tel.telefono}','#{tel.telDescrip}')">Get</a>
+                        <a href="javascript:cargar('#{user.idusuario}','#{user.usuario}','#{user.contra}','#{user.nivel}')">Get</a>
                     </h:column>
                 </h:dataTable>
             </div>

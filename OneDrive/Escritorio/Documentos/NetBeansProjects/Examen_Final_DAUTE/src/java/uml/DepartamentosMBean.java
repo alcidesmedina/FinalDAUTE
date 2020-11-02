@@ -27,7 +27,7 @@ public class DepartamentosMBean {
     private int idDepartamento; 
     private String nombreDepto; 
     private int cantEmpleados; 
-    private Telefono codTels; 
+    private int codTels; 
 
     public int getIdDepartamento() {
         return idDepartamento;
@@ -53,11 +53,11 @@ public class DepartamentosMBean {
         this.cantEmpleados = cantEmpleados;
     }
 
-    public Telefono getCodTels() {
+    public int getCodTels() {
         return codTels;
     }
 
-    public void setCodTels(Telefono codTels) {
+    public void setCodTels(int codTels) {
         this.codTels = codTels;
     }
     
@@ -78,7 +78,7 @@ public class DepartamentosMBean {
     {
         try {
             DepartamentoJpaController ctrl = new DepartamentoJpaController();
-            ctrl.edit(new Departamento(idDepartamento,nombreDepto,cantEmpleados,codTels));
+            ctrl.edit(new Departamento(idDepartamento,nombreDepto,cantEmpleados, codTels));
         } catch (Exception e) {
             System.out.print(e);
         }

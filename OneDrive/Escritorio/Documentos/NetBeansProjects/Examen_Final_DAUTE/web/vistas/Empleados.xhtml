@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>EMPLEADOS</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></link>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
+        <script>
+            function cargar(cod,nom,ape,iddept,sal,ed,idus)
+            {
+                document.getElementById('myForm:codempl').value=cod; 
+                document.getElementById('myForm:nomempl').value=nom; 
+                document.getElementById('myForm:apeempl').value=ape; 
+                document.getElementById('myForm:iddepto').value=iddept;
+                document.getElementById('myForm:salario').value=sal; 
+                document.getElementById('myForm:edad').value=ed; 
+                document.getElementById('myForm:iduser').value=idus; 
+            }
+            
+            function limpiar()
+            {
+                document.getElementById('myForm:codempl').value=null; 
+                document.getElementById('myForm:nomempl').value=null; 
+                document.getElementById('myForm:apeempl').value=null; 
+                document.getElementById('myForm:iddepto').value=null;
+                document.getElementById('myForm:salario').value=null; 
+                document.getElementById('myForm:edad').value=null; 
+                document.getElementById('myForm:iduser').value=null;  
+            }
+        </script>
+    </h:head>
+
+    <h:body>
+        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+            
+            <hr></hr>
+            <p style="color:white; font-size: 20px;"> Bienvenido *** (Nivel: ***) | <a style="color:white;" href="../index.xhtml"> | Home | </a></p> 
+            <hr></hr>
+            
+        </nav>
+
+        <center>
+            <h2>Formulario Mantenimiento Tabla Empleados</h2><hr></hr>
+            
+            <div style="width: 35%">
+                <h:form id="myForm" class="form-group">
+                    Código Empleado : <h:inputText class="form-control" value="#{empleadoMBean.codEmpleado}" id="codempl"></h:inputText><br></br>        
+                    Nombres : <h:inputText class="form-control"  value="#{empleadoMBean.nombres}" id="nomempl"></h:inputText><br></br>
+                    Apellidos : <h:inputText class="form-control"  value="#{empleadoMBean.apellidos}" id="apeempl"></h:inputText>
+                    ID Departamento : <h:inputText class="form-control"  value="#{empleadoMBean.idDepartamento}" id="iddepto"></h:inputText>
+                    Salario : <h:inputText class="form-control"  value="#{empleadoMBean.salario}" id="salario"></h:inputText>
+                    Edad : <h:inputText class="form-control"  value="#{empleadoMBean.edad}" id="edad"></h:inputText>
+                    ID Usuario : <h:inputText class="form-control"  value="#{empleadoMBean.idUsuario}" id="iduser"></h:inputText>
+                    <br></br><br></br>
+                    <h:commandButton class="btn btn-success" action="#{empleadoMBean.agregar()}" value="Agregar"></h:commandButton>
+                    <h:commandButton class="btn btn-info" action="#{empleadoMBean.modificar()}" value="Modificar"></h:commandButton>
+                    <h:commandButton class="btn btn-danger" action="#{empleadoMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
+                    <h:commandButton class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
+                </h:form>
+            </div>
+            
+            
+            <hr></hr>
+            
+            <div style="width: 700px; position: relative;">
+                <h:dataTable class="table" value="#{empleadoMBean.tabla}" var="empl">
+                    <h:column>
+                        <f:facet name="header">CODIGO EMPLEADO</f:facet>
+                        <h:outputText value="#{empl.codEmpleado}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">NOMBRES</f:facet>
+                        <h:outputText value="#{empl.nombres}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">APELLIDOS</f:facet>
+                        <h:outputText value="#{empl.apellidos}"></h:outputText>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">ID DEPARTAMENTO</f:facet>
+                        <h:outputText value="#{empl.idDepartamento.idDepartamento}"></h:outputText>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">SALARIO</f:facet>
+                        <h:outputText value="#{empl.salario}"></h:outputText>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">EDAD</f:facet>
+                        <h:outputText value="#{empl.edad}"></h:outputText>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">ID USUARIO</f:facet>
+                        <h:outputText value="#{empl.idUsuario.idusuario}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">SELECCIONAR</f:facet>
+                        <a href="javascript:cargar('#{empl.codEmpleado}','#{empl.nombres}','#{empl.apellidos}','#{empl.idDepartamento.idDepartamento}','#{empl.salario}','#{empl.edad}','#{empl.idUsuario.idusuario}')">Get</a>
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </center>
+
+    </h:body>
+
+</html>

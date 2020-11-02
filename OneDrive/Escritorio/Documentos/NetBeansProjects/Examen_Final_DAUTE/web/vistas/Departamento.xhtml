@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>DEPARTAMENTOS</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></link>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
+        <script>
+            function cargar(id,nom,cant,codtel)
+            {
+                document.getElementById('myForm:iddept').value=id; 
+                document.getElementById('myForm:nomdept').value=nom; 
+                document.getElementById('myForm:cant').value=cant; 
+                document.getElementById('myForm:codtel').value=codtel; 
+            }
+            
+            function limpiar()
+            {
+                document.getElementById('myForm:iddept').value= null; 
+                document.getElementById('myForm:nomdept').value= null; 
+                document.getElementById('myForm:cant').value= null; 
+                document.getElementById('myForm:codtel').value=null; 
+            }
+        </script>
+    </h:head>
+
+    <h:body>
+        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+            
+            <hr></hr>
+            <p style="color:white; font-size: 20px;"> Bienvenido *** (Nivel: ***) | <a style="color:white;" href="../index.xhtml"> | Home | </a></p> 
+            <hr></hr>
+            
+        </nav>
+
+        <center>
+            <h2>Formulario Mantenimiento Tabla Departamentos</h2><hr></hr>
+            
+            <div style="width: 35%">
+                <h:form id="myForm" class="form-group">
+                    ID Departamento : <h:inputText class="form-control" value="#{departamentosMBean.idDepartamento}" id="iddept"></h:inputText><br></br>        
+                    Nombre Departamento : <h:inputText class="form-control"  value="#{departamentosMBean.nombreDepto}" id="nomdept"></h:inputText><br></br>
+                    Cantidad Empleados : <h:inputText class="form-control"  value="#{departamentosMBean.cantEmpleados}" id="cant"></h:inputText>
+                    Código Teléfono : <h:inputText class="form-control"  value="#{departamentosMBean.codTels}" id="codtel"></h:inputText>
+                    <br></br><br></br>
+                    <h:commandButton class="btn btn-success" action="#{departamentosMBean.agregar()}" value="Agregar"></h:commandButton>
+                    <h:commandButton class="btn btn-info" action="#{departamentosMBean.modificar()}" value="Modificar"></h:commandButton>
+                    <h:commandButton class="btn btn-danger" action="#{departamentosMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
+                    <h:commandButton class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
+                </h:form>
+            </div>
+            
+            
+            <hr></hr>
+            
+            <div style="width: 700px; position: relative;">
+                <h:dataTable class="table" value="#{departamentosMBean.tabla}" var="dept">
+                    <h:column>
+                        <f:facet name="header">ID DEPARTAMENTO</f:facet>
+                        <h:outputText value="#{dept.idDepartamento}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">NOMBRE DEPARTAMENTO</f:facet>
+                        <h:outputText value="#{dept.nombreDepto}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">CANTIDAD EMPELEADOS</f:facet>
+                        <h:outputText value="#{dept.cantEmpleados}"></h:outputText>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">CODIGO TELEFONO</f:facet>
+                        <h:outputText value="#{dept.codTels.codTels}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">SELECCIONAR</f:facet>
+                        <a href="javascript:cargar('#{dept.idDepartamento}','#{dept.nombreDepto}','#{dept.cantEmpleados}','#{dept.codTels.codTels}')">Get</a>
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </center>
+
+    </h:body>
+
+</html>
