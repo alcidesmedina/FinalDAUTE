@@ -15,10 +15,12 @@
 <h:body>
     
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-            
+         
+        <h:form style="margin-left: 32%">
         <hr></hr>
         <p style="color:white; font-size: 20px;"> BIENVENIDOS A SU SISTEMA DE MANTENIMIENTO </p> 
         <hr></hr>
+        </h:form>
             
     </nav>
     
@@ -35,6 +37,8 @@
 		<br></br><br></br>
 		
                 <h:commandButton class="btn btn-success" id="btnIngresar" action="#{usuariosMBean.validateUsernamePassword}" value="Login"></h:commandButton>
+                
+                <h:commandButton class="btn btn-secondary" id="btnNuevo" action="#{usuariosMBean.validateUsernamePassword}" value="Crear Cuenta"></h:commandButton>
 	</h:form>
         </div>
     

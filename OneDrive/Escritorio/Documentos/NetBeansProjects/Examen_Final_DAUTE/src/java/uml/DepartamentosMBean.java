@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -104,5 +106,10 @@ public class DepartamentosMBean {
         }
     }
 
-    
+    public String sesion()
+    {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+        return "deptos"; 
+    }
 }

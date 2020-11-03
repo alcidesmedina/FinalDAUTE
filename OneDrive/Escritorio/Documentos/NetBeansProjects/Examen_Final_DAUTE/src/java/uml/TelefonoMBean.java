@@ -109,4 +109,11 @@ public class TelefonoMBean {
         return "tele"; 
     }
     
+    public String indexsesion()
+    {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+        return "indexses"; 
+    }
+    
 }

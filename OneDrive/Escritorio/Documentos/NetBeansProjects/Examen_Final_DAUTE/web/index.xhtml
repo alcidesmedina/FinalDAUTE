@@ -15,9 +15,9 @@
     </h:head>
     <h:body>
         <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-            <h:form>
+            <h:form style="margin-left: 4.5%">
             <hr></hr>
-            <p style="color:white; font-size: 20px;"> Bienvenido #{usuariosMBean.usuario} (Nivel: #{usuariosMBean.nivel}) | <h:commandLink action="#{usuariosMBean.logout}" value="Logout"></h:commandLink></p> 
+            <p style="color:white; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink action="#{usuariosMBean.logout}" value="Logout"></h:commandLink></p> 
             <hr></hr>
             </h:form>
             
@@ -33,13 +33,13 @@
                 <h:commandLink action="#{telefonoMBean.sesion}" value="Mantenimiento Teléfonos"></h:commandLink>
             </li>
             <li style="margin-left: 75px">
-                <h:commandLink action="#{usuariosMBean.validateUsernamePassword()}" value="Mantenimiento Teléfonos"></h:commandLink>
+                <h:commandLink action="#{usuariosMBean.sesion()}" value="Mantenimiento Usuarios"></h:commandLink>
             </li>
             <li style="margin-left: 75px">
-                <a href="../vistas/Empleados.xhtml">Mantenimiento Empleados</a>
+                <h:commandLink action="#{departamentosMBean.sesion}" value="Mantenimiento Departamentos"></h:commandLink>
             </li>
             <li style="margin-left: 75px">
-                <a href="../vistas/Usuarios.xhtml">Mantenimiento Usuarios</a>
+                <h:commandLink action="#{departamentosMBean.sesion}" value="Mantenimiento Empleados"></h:commandLink>
             </li>
         </lable>
         </h:form> 

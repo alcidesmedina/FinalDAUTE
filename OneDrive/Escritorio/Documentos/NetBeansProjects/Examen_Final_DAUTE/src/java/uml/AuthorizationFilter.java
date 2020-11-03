@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.lang.String;
 
 @WebFilter(filterName = "AuthFilter", urlPatterns = { "*.xhtml" })
 public class AuthorizationFilter implements Filter {
@@ -37,6 +38,11 @@ public class AuthorizationFilter implements Filter {
 			HttpServletRequest reqt = (HttpServletRequest) request;
 			HttpServletResponse resp = (HttpServletResponse) response;
 			HttpSession ses = reqt.getSession(false);
+                        
+                        System.err.println("Cache Filter- Called");
+                        resp.setHeader("Pragma","no-cache");
+                        resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
+                        resp.setDateHeader ("Expires", 0);
 
 			String reqURI = reqt.getRequestURI();
 			if (reqURI.indexOf("login/login_index.xhtml") >= 0
