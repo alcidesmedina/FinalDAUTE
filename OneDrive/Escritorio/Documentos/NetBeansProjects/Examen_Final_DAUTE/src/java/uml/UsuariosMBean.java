@@ -15,6 +15,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
+import org.jboss.weld.context.RequestContext;
 /**
  *
  * @author andie
@@ -123,6 +124,18 @@ public class UsuariosMBean {
             }
             else
             {
+                for(Usuarios us : ls)
+                {
+                    if(us.getUsuario().equals(usuario) && us.getContra().equals(contra))
+                    {
+                        FacesContext.getCurrentInstance().getExternalContext().dispatch("../index.xhtml");;
+                    }
+                    else
+                    {
+                        FacesContext context = FacesContext.getCurrentInstance();
+                        context.addMessage(null, new FacesMessage("Usuario o contraseña inválidos. Intente de nuevo."));
+                    }
+                }
                 
             }
         } catch (Exception e) {

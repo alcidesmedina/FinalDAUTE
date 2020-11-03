@@ -22,20 +22,19 @@
             
     </nav>
     
-        <div style="width: 700px; position: relative; margin-left: 35%">
-	<h:form>
-		<h3>INGRESO AL SISTEMA</h3>
+        <div style="width: 700px; position: relative; margin-left: 40%">
+	<h:form style="width: 35%" id="myForm" class="form-group">
 		<h:outputText value="Username: " />
-                <h:inputText id="username" value="#{usuariosMBean.usuario}"></h:inputText>
+                <h:inputText class="form-control" id="username" value="#{usuariosMBean.usuario}"></h:inputText>
 		<h:message for="username"></h:message>
 		<br></br><br></br>
 		
 		<h:outputText value="Password: " />
-                <h:inputSecret id="password" value="#{usuariosMBean.contra}"></h:inputSecret>
+                <h:inputSecret class="form-control" id="password" value="#{usuariosMBean.contra}"></h:inputSecret>
 		<h:message for="password"></h:message>
 		<br></br><br></br>
 		
-                <h:commandButton id="btnIngresar" action="#{usuariosMBean.validateUsernamePassword}" value="Login"></h:commandButton>
+                <h:commandButton class="btn btn-success" id="btnIngresar" action="#{usuariosMBean.validateUsernamePassword}" value="Login"></h:commandButton>
 	</h:form>
         </div>
     
