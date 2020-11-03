@@ -143,14 +143,14 @@ public class UsuariosMBean {
         } catch (Exception e) {
             System.out.print(e);
         }
-        return "login_index";
+        return "index";
     }
     
     public String logout()
     {
         HttpSession session = SessionUtils.getSession();
 	session.invalidate();
-	return "login";
+	return "index";
     }
     
 }
