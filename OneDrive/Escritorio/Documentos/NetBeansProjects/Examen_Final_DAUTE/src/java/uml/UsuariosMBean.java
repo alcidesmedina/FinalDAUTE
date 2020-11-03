@@ -5,11 +5,16 @@
  */
 package uml;
 
+import static com.sun.faces.el.FacesCompositeELResolver.ELResolverChainType.Faces;
+import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.naming.NamingException;
+import javax.servlet.http.HttpSession;
 /**
  *
  * @author andie
@@ -102,6 +107,28 @@ public class UsuariosMBean {
         } catch (Exception e) {
             System.out.print(e);
         }
+    }
+    
+    public String validateUsernamePassword()
+    {
+        try {
+            List<Usuarios> ls = new ArrayList<>();
+            UsuariosJpaController ctrl = new UsuariosJpaController();
+            ls = ctrl.findUsuariosEntities();
+
+            if(usuario.isEmpty() && contra.isEmpty())
+            {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage("Debe ingresar usuario y contraseña."));
+            }
+            else
+            {
+                
+            }
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        return "login_index";
     }
     
 }

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+<h:head>
+	<title>LOGIN</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></link>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</h:head>
+<h:body>
+    
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+            
+        <hr></hr>
+        <p style="color:white; font-size: 20px;"> BIENVENIDOS A SU SISTEMA DE MANTENIMIENTO </p> 
+        <hr></hr>
+            
+    </nav>
+    
+        <div style="width: 700px; position: relative; margin-left: 35%">
+	<h:form>
+		<h3>INGRESO AL SISTEMA</h3>
+		<h:outputText value="Username: " />
+                <h:inputText id="username" value="#{usuariosMBean.usuario}"></h:inputText>
+		<h:message for="username"></h:message>
+		<br></br><br></br>
+		
+		<h:outputText value="Password: " />
+                <h:inputSecret id="password" value="#{usuariosMBean.contra}"></h:inputSecret>
+		<h:message for="password"></h:message>
+		<br></br><br></br>
+		
+                <h:commandButton id="btnIngresar" action="#{usuariosMBean.validateUsernamePassword}" value="Login"></h:commandButton>
+	</h:form>
+        </div>
+    
+</h:body>
+</html>
