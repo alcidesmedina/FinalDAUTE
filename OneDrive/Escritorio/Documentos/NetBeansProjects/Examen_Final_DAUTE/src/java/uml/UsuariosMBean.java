@@ -5,17 +5,13 @@
  */
 package uml;
 
-import static com.sun.faces.el.FacesCompositeELResolver.ELResolverChainType.Faces;
-import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
-import org.jboss.weld.context.RequestContext;
 /**
  *
  * @author andie
@@ -128,6 +124,12 @@ public class UsuariosMBean {
                 {
                     if(us.getUsuario().equals(usuario) && us.getContra().equals(contra))
                     {
+                        setNivel(us.getNivel());
+                        String uss = us.getUsuario();
+                        String niv = us.getNivel();
+                        HttpSession session = SessionUtils.getSession();
+                        session.setAttribute("username", uss);
+                        session.setAttribute("level", niv);
                         FacesContext.getCurrentInstance().getExternalContext().dispatch("../index.xhtml");;
                     }
                     else
@@ -142,6 +144,13 @@ public class UsuariosMBean {
             System.out.print(e);
         }
         return "login_index";
+    }
+    
+    public String logout()
+    {
+        HttpSession session = SessionUtils.getSession();
+	session.invalidate();
+	return "login";
     }
     
 }
