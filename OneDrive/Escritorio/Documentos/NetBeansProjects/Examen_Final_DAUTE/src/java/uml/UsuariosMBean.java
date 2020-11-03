@@ -130,7 +130,8 @@ public class UsuariosMBean {
                         HttpSession session = SessionUtils.getSession();
                         session.setAttribute("username", uss);
                         session.setAttribute("level", niv);
-                        FacesContext.getCurrentInstance().getExternalContext().dispatch("../index.xhtml");;
+                        FacesContext.getCurrentInstance().getExternalContext().dispatch("../index.xhtml");
+                        return "admin"; 
                     }
                     else
                     {
@@ -143,14 +144,14 @@ public class UsuariosMBean {
         } catch (Exception e) {
             System.out.print(e);
         }
-        return "index";
+        return "login_index";
     }
     
     public String logout()
     {
         HttpSession session = SessionUtils.getSession();
 	session.invalidate();
-	return "index";
+	return "login_index";
     }
     
 }

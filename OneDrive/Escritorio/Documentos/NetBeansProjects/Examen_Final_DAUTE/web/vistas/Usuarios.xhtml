@@ -38,7 +38,7 @@
         <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
             
             <hr></hr>
-            <p style="color:white; font-size: 20px;"> Bienvenido *** (Nivel: ***) | <a style="color:white;" href="../index.xhtml"> | Home | </a></p> 
+            <p style="color:white; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <a style="color:white;" href="../index.xhtml"> | Home | </a></p> 
             <hr></hr>
             
         </nav>

@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -97,6 +100,13 @@ public class TelefonoMBean {
         } catch (Exception e) {
             System.out.print(e);
         }
+    }
+    
+    public String sesion()
+    {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+        return "tele"; 
     }
     
 }
