@@ -43,8 +43,10 @@ public class AuthorizationFilter implements Filter {
                         resp.setHeader("Pragma","no-cache");
                         resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
                         resp.setDateHeader ("Expires", 0);
-
-			String reqURI = reqt.getRequestURI();
+                        String reqURI = reqt.getRequestURI();
+                        
+                        
+			
 			if (reqURI.indexOf("login/login_index.xhtml") >= 0
 					|| (ses != null && ses.getAttribute("username") != null)
 					|| reqURI.indexOf("/public/") >= 0
@@ -52,6 +54,7 @@ public class AuthorizationFilter implements Filter {
 				chain.doFilter(request, response);
 			else
 				resp.sendRedirect(reqt.getContextPath() + "/faces/login/login_index.xhtml");
+                        
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

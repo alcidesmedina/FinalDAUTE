@@ -106,6 +106,7 @@ public class UsuariosMBean {
         }
     }
     
+    
     public String validateUsernamePassword()
     {
         try {
@@ -149,9 +150,11 @@ public class UsuariosMBean {
     
     public String logout()
     {
+        
         HttpSession session = SessionUtils.getSession();
 	session.invalidate();
-	return "salir";
+        
+	return "salir"; 
     }
     
     public String sesion()

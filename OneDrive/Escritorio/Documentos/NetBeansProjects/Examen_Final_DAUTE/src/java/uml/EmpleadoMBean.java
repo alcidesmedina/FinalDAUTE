@@ -107,7 +107,7 @@ public class EmpleadoMBean {
     {
         try {
             EmpleadoJpaController ctrl = new EmpleadoJpaController();
-            ctrl.edit(new Empleado(codEmpleado,nombres,apellidos,salario,edad,idDepartamento,idUsuario));
+            ctrl.edit(new Empleado(codEmpleado,nombres,apellidos,idDepartamento,salario,edad,idUsuario));
         } catch (Exception e) {
             System.out.print(e);
         }
@@ -127,7 +127,7 @@ public class EmpleadoMBean {
     {
         try {
             EmpleadoJpaController ctrl = new EmpleadoJpaController();
-            ctrl.create(new Empleado(codEmpleado,nombres,apellidos,salario,edad,idDepartamento,idUsuario));
+            ctrl.create(new Empleado(codEmpleado,nombres,apellidos,idDepartamento,salario,edad,idUsuario));
         } catch (Exception e) {
             System.out.print(e);
         }
