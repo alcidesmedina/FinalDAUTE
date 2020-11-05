@@ -52,7 +52,7 @@
                 <h:form id="myForm" class="form-group">
                     <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="id">ID Usuario</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control" value="#{usuariosMBean.idusuario}" id="idus"></h:inputText><br></br>        
                     <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="us">Usuario:</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{usuariosMBean.usuario}" id="user"></h:inputText><br></br>
-                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="pw">Contraseña:</h:outputLabel> <h:inputSecret rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputSecret>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="pw">Contraseña:</h:outputLabel> <h:inputSecret rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputSecret><br></br>
                     <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="id">Nivel: </h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{usuariosMBean.nivel}" id="txtlvl"></h:inputText>
                     <br></br><br></br>
                     <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-success" action="#{usuariosMBean.agregar()}" value="Agregar"></h:commandButton>

@@ -39,7 +39,7 @@
             
             <h:form style="margin-left: 32%">
             <hr></hr>
-            <p style="color:white; font-weight: bold; font-size: 20px;"> BIENVENIDOS A SU SISTEMA DE MANTENIMIENTO | <h:commandLink style="color:white" action="login_index.xhtml" value="Login"></h:commandLink></p> 
+            <p style="color:white; font-weight: bold; font-size: 20px;"> BIENVENIDOS A SU SISTEMA DE MANTENIMIENTO | <h:commandLink style="color:white" action="#{usuariosMBean.logout()}" value="Login"></h:commandLink></p> 
             <hr></hr>
             </h:form>
             
@@ -52,44 +52,13 @@
                 <h:form id="myForm" class="form-group">
                     ID Usuario : <h:inputText class="form-control" value="#{usuariosMBean.idusuario}" id="idus"></h:inputText><br></br>        
                     Usuario : <h:inputText class="form-control"  value="#{usuariosMBean.usuario}" id="user"></h:inputText><br></br>
-                    Contraseña : <h:inputSecret class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputSecret>
+                    Contraseña : <h:inputSecret class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputSecret><br></br>
                     Nivel : <h:inputText class="form-control"  value="#{usuariosMBean.nivel}" id="txtlvl"></h:inputText>
                     <br></br><br></br>
                     <h:commandButton class="btn btn-success" action="#{usuariosMBean.agregar()}" value="Crear"></h:commandButton>
                 </h:form>
             </div>
             
-            
-            <hr></hr>
-            
-            <div style="width: 700px; position: relative;">
-                <h:dataTable class="table" value="#{usuariosMBean.tabla}" var="user">
-                    <h:column>
-                        <f:facet name="header">ID USUARIO</f:facet>
-                        <h:outputText value="#{user.idusuario}"></h:outputText>
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name="header">USUARIO</f:facet>
-                        <h:outputText value="#{user.usuario}"></h:outputText>
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name="header">CONTRASEÑA</f:facet>
-                        <h:outputText value="#{user.contra}"></h:outputText>
-                    </h:column>
-                    
-                    <h:column>
-                        <f:facet name="header">NIVEL</f:facet>
-                        <h:outputText value="#{user.nivel}"></h:outputText>
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name="header">SELECCIONAR</f:facet>
-                        <a href="javascript:cargar('#{user.idusuario}','#{user.usuario}','#{user.contra}','#{user.nivel}')">Get</a>
-                    </h:column>
-                </h:dataTable>
-            </div>
         </center>
 
     </h:body>
