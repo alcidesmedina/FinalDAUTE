@@ -21,6 +21,8 @@ import javax.servlet.http.HttpSession;
 @RequestScoped
 public class UsuariosMBean {
 
+    private boolean finding;
+
     /**
      * Creates a new instance of UsuariosMBean
      */
@@ -109,6 +111,34 @@ public class UsuariosMBean {
         }
     }
     
+    public List<Usuarios> find()
+    {
+        List<Usuarios> ls2 = new ArrayList<>();
+        try {
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+            List<Usuarios> ls = new ArrayList<>();
+            UsuariosJpaController ctrl = new UsuariosJpaController();
+            ls = ctrl.findUsuariosEntities();
+            Object myuser = session.getAttribute("username");
+            
+            for(Usuarios uss : ls)
+            {
+                if(uss.getUsuario().equals(myuser))
+                {
+                    ls2.add(new Usuarios(uss.getIdusuario(), uss.getUsuario(), uss.getContra(), uss.getNivel()));
+                    FacesContext context = FacesContext.getCurrentInstance();
+                    this.finding = true; 
+                    context.addMessage(null, new FacesMessage("¡EXITO! Debe cerrar sesión e ingresar de nuevo para ver los cambios."));
+                }
+            }
+            
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        return ls2;
+    }
+    
     
     public String sestemp()
     {
@@ -139,9 +169,11 @@ public class UsuariosMBean {
                         setNivel(us.getNivel());
                         String uss = us.getUsuario();
                         String niv = us.getNivel();
+                        int idus = us.getIdusuario();
                         HttpSession session = SessionUtils.getSession();
                         session.setAttribute("username", uss);
                         session.setAttribute("level", niv);
+                        session.setAttribute("iduser", idus);
                         //FacesContext.getCurrentInstance().getExternalContext().dispatch("../index.xhtml");
                         return "admin"; 
                     }
@@ -175,5 +207,10 @@ public class UsuariosMBean {
         return "usua"; 
     }
     
-    
+    public String sesion1()
+    {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+        return "cambiarC"; 
+    }
 }

@@ -36,6 +36,11 @@
                         <redirect />
 		</navigation-case>
                 <navigation-case>
+			<from-outcome>cambiarC</from-outcome>
+			<to-view-id>vistas/CambioCredenciales.xhtml</to-view-id>
+                        <redirect />
+		</navigation-case>
+                <navigation-case>
 			<from-outcome>tele</from-outcome>
 			<to-view-id>vistas/Telefono.xhtml</to-view-id>
                         <redirect/>
@@ -85,6 +90,14 @@
 		<navigation-case>
 			<from-outcome>salir</from-outcome>
 			<to-view-id>/login/login_index.xhtml</to-view-id>
+                        <redirect/>
+		</navigation-case>
+        </navigation-rule>
+        <navigation-rule>
+            <from-view-id>/vistas/CambioCredenciales.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>indexses</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
                         <redirect/>
 		</navigation-case>
         </navigation-rule>
