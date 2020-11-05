@@ -106,6 +106,13 @@ public class UsuariosMBean {
         }
     }
     
+    public String sestemp()
+    {
+        HttpSession session = SessionUtils.getSession();
+        session.setAttribute("username", "temp");
+        return "sestemp";
+    }
+    
     
     public String validateUsernamePassword()
     {

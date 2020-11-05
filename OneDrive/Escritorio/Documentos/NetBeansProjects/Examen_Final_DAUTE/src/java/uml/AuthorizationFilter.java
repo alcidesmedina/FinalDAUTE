@@ -18,8 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.lang.String;
+import javax.servlet.annotation.WebInitParam;
 
-@WebFilter(filterName = "AuthFilter", urlPatterns = { "*.xhtml" })
+@WebFilter(filterName = "AuthFilter", urlPatterns = { "*.xhtml" }
+)
 public class AuthorizationFilter implements Filter {
 
 	public AuthorizationFilter() {

@@ -13,6 +13,14 @@
 		</navigation-case>
 	</navigation-rule>
         <navigation-rule>
+		<from-view-id>login/login_index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sestemp</from-outcome>
+			<to-view-id>/Cuenta.xhtml</to-view-id>
+                        <redirect/>
+		</navigation-case>
+	</navigation-rule>
+        <navigation-rule>
             <from-view-id>/vistas/Telefono.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>indexses</from-outcome>

@@ -39,7 +39,7 @@
                 <h:commandButton class="btn btn-success" id="btnIngresar" action="#{usuariosMBean.validateUsernamePassword}" value="Login"></h:commandButton>
                 <br></br><br></br>
                 <h:outputText value="¿No tienes cuenta?"></h:outputText>
-                <h:commandLink value="Crear" action="Cuenta.xhtml"></h:commandLink>
+                <h:commandLink value="Crear" action="#{usuariosMBean.sestemp()}"></h:commandLink>
 	</h:form>
         </div>
     

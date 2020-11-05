@@ -40,7 +40,7 @@
         </script>
     </h:head>
 
-    <h:body>
+    <h:body rendered="#{sessionScope['username'] != 'temp'}">
         <nav style="background-color:#0090b8 " class="navbar navbar-expand navbar-light static-top">
             
             <h:form style="margin-left: 35%">
