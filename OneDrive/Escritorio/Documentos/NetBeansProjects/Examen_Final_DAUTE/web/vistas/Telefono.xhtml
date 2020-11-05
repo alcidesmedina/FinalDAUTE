@@ -33,29 +33,29 @@
     </h:head>
 
     <h:body>
-        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <nav style="background-color:#0090b8 " class="navbar navbar-expand navbar-light static-top">
             
-            <h:form style="margin-left: 37%">
+            <h:form style="margin-left: 35%">
             <hr></hr>
-            <p style="color:white; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink action="#{telefonoMBean.indexsesion}" value="Home"></h:commandLink></p> 
+            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink style="color:white" action="#{telefonoMBean.indexsesion}" value="Home"></h:commandLink></p> 
             <hr></hr>
             </h:form>
             
         </nav>
 
         <center>
-            <h:form rendered="#{sessionScope['level'] != 'Auditor'}"><h2>Formulario Mantenimiento Tabla Teléfonos</h2></h:form><hr></hr>
+            <h:form rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}"><h2>Formulario Mantenimiento Tabla Teléfonos</h2></h:form><hr></hr>
             
             <div style="width: 35%">
                 <h:form id="myForm" class="form-group">
-                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="cod">Código Teléfono:</h:outputLabel> <h:inputText readonly="#{facesContext.renderResponse}" rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control" value="#{telefonoMBean.codTels}" id="idcod"></h:inputText><br></br>        
-                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="tel">Teléfono:</h:outputLabel>  <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{telefonoMBean.telefono}" id="tel"></h:inputText><br></br>
-                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="desc">Descripción:</h:outputLabel>  <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{telefonoMBean.telDescrip}" id="teldes"></h:inputText>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" for="cod">Código Teléfono:</h:outputLabel> <h:inputText readonly="#{facesContext.renderResponse}" rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="form-control" value="#{telefonoMBean.codTels}" id="idcod"></h:inputText><br></br>        
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" for="tel">Teléfono:</h:outputLabel>  <h:inputText rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="form-control"  value="#{telefonoMBean.telefono}" id="tel"></h:inputText><br></br>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" for="desc">Descripción:</h:outputLabel>  <h:inputText rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="form-control"  value="#{telefonoMBean.telDescrip}" id="teldes"></h:inputText>
                     <br></br><br></br>
-                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-success" action="#{telefonoMBean.agregar()}" value="Agregar"></h:commandButton>
-                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-info" action="#{telefonoMBean.modificar()}" value="Modificar"></h:commandButton>
-                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-danger" action="#{telefonoMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
-                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="btn btn-success" action="#{telefonoMBean.agregar()}" value="Agregar"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="btn btn-info" action="#{telefonoMBean.modificar()}" value="Modificar"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="btn btn-danger" action="#{telefonoMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
                 </h:form>
             </div>
             

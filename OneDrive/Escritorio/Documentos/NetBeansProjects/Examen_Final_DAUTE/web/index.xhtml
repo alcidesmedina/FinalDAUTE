@@ -14,10 +14,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </h:head>
     <h:body>
-        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <nav style="background-color:#0090b8" class="navbar navbar-expand navbar-light static-top">
             <h:form style="margin-left: 4.5%">
             <hr></hr>
-            <p style="color:white; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink action="#{usuariosMBean.logout}" value="Logout"></h:commandLink></p> 
+            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink style="color:white" action="#{usuariosMBean.logout}" value="Logout"></h:commandLink></p> 
             <hr></hr>
             </h:form>
             
@@ -29,18 +29,15 @@
          
          <h:form>
         <lable>
-            <li style="margin-left: 75px">
-                <h:commandLink action="#{telefonoMBean.sesion}" value="Mantenimiento Teléfonos"></h:commandLink>
-            </li>
-            <li style="margin-left: 75px">
-                <h:commandLink action="#{usuariosMBean.sesion()}" value="Mantenimiento Usuarios"></h:commandLink>
-            </li>
-            <li style="margin-left: 75px">
-                <h:commandLink action="#{departamentosMBean.sesion}" value="Mantenimiento Departamentos"></h:commandLink>
-            </li>
-            <li style="margin-left: 75px">
-                <h:commandLink action="#{empleadoMBean.sesion}" value="Mantenimiento Empleados"></h:commandLink>
-            </li>
+            
+            <h:commandLink style="margin-left: 5%" class="btn btn-warning" action="#{telefonoMBean.sesion}" value="Mantenimiento Teléfonos"></h:commandLink>
+            
+            <h:commandLink rendered="#{sessionScope['level'] != 'Simple Usuario'}" style="margin-left: 5%" class="btn btn-primary" action="#{usuariosMBean.sesion()}" value="Mantenimiento Usuarios"></h:commandLink>
+            
+            <h:commandLink style="margin-left: 5%" class="btn btn-success" action="#{departamentosMBean.sesion}" value="Mantenimiento Departamentos"></h:commandLink>
+            
+            <h:commandLink style="margin-left: 5%" class="btn btn-info" action="#{empleadoMBean.sesion}" value="Mantenimiento Empleados"></h:commandLink>
+           
         </lable>
         </h:form> 
          

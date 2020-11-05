@@ -35,11 +35,11 @@
     </h:head>
 
     <h:body>
-        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <nav style="background-color:#0090b8 " class="navbar navbar-expand navbar-light static-top">
             
             <h:form style="margin-left: 37%">
             <hr></hr>
-            <p style="color:white; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink action="#{telefonoMBean.indexsesion}" value="Home"></h:commandLink></p> 
+            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink  style="color:white" action="#{telefonoMBean.indexsesion}" value="Home"></h:commandLink></p> 
             <hr></hr>
             </h:form>
             
