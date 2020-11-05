@@ -10,6 +10,7 @@ import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 /**
@@ -23,6 +24,8 @@ public class UsuariosMBean {
     /**
      * Creates a new instance of UsuariosMBean
      */
+    
+    
     public UsuariosMBean() {
     }
     
@@ -105,6 +108,7 @@ public class UsuariosMBean {
             System.out.print(e);
         }
     }
+    
     
     public String sestemp()
     {
