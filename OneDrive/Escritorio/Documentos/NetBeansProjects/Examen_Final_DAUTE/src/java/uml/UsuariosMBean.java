@@ -128,8 +128,6 @@ public class UsuariosMBean {
                 {
                     ls2.add(new Usuarios(uss.getIdusuario(), uss.getUsuario(), uss.getContra(), uss.getNivel()));
                     FacesContext context = FacesContext.getCurrentInstance();
-                    this.finding = true; 
-                    context.addMessage(null, new FacesMessage("¡EXITO! Debe cerrar sesión e ingresar de nuevo para ver los cambios."));
                 }
             }
             
