@@ -46,27 +46,29 @@
         </nav>
 
         <center>
-            <h2>Formulario Mantenimiento Tabla Departamentos</h2><hr></hr>
+            <h:form rendered="#{sessionScope['level'] != 'Auditor'}"><h2>Formulario Mantenimiento Tabla Departamentos</h2></h:form><hr></hr>
             
             <div style="width: 35%">
                 <h:form id="myForm" class="form-group">
-                    ID Departamento : <h:inputText class="form-control" value="#{departamentosMBean.idDepartamento}" id="iddept"></h:inputText><br></br>        
-                    Nombre Departamento : <h:inputText class="form-control"  value="#{departamentosMBean.nombreDepto}" id="nomdept"></h:inputText><br></br>
-                    Cantidad Empleados : <h:inputText class="form-control"  value="#{departamentosMBean.cantEmpleados}" id="cant"></h:inputText>
-                    Código Teléfono : <h:inputText class="form-control"  value="#{departamentosMBean.codTels}" id="codtel"></h:inputText>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="id">ID Departamento:</h:outputLabel> <h:inputText readonly="#{facesContext.renderResponse}" rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control" value="#{departamentosMBean.idDepartamento}" id="iddept"></h:inputText><br></br>        
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="nom">Nombre Departamento:</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{departamentosMBean.nombreDepto}" id="nomdept"></h:inputText><br></br>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="cant">Cantidad Empleados</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{departamentosMBean.cantEmpleados}" id="cant"></h:inputText>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="cod">Código Teléfono:</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{departamentosMBean.codTels}" id="codtel"></h:inputText>
                     <br></br><br></br>
-                    <h:commandButton class="btn btn-success" action="#{departamentosMBean.agregar()}" value="Agregar"></h:commandButton>
-                    <h:commandButton class="btn btn-info" action="#{departamentosMBean.modificar()}" value="Modificar"></h:commandButton>
-                    <h:commandButton class="btn btn-danger" action="#{departamentosMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
-                    <h:commandButton class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-success" action="#{departamentosMBean.agregar()}" value="Agregar"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-info" action="#{departamentosMBean.modificar()}" value="Modificar"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-danger" action="#{departamentosMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
                 </h:form>
             </div>
             
             
             <hr></hr>
+            <h4 style="color:orangered">Contenido de Tabla Departamentos</h4>
+            <hr></hr>
             
             <div style="width: 700px; position: relative;">
-                <h:dataTable class="table" value="#{departamentosMBean.tabla}" var="dept">
+                <h:dataTable class="table table-dark" value="#{departamentosMBean.tabla}" var="dept">
                     <h:column>
                         <f:facet name="header">ID DEPARTAMENTO</f:facet>
                         <h:outputText value="#{dept.idDepartamento}"></h:outputText>

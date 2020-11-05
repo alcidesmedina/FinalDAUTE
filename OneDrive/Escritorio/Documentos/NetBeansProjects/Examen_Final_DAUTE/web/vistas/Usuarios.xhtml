@@ -46,27 +46,30 @@
         </nav>
 
         <center>
-            <h2>Formulario Mantenimiento Tabla Usuarios</h2><hr></hr>
+            <h:form rendered="#{sessionScope['level'] != 'Auditor'}"><h2>Formulario Mantenimiento Tabla Usuarios</h2></h:form><hr></hr>
             
             <div style="width: 35%">
                 <h:form id="myForm" class="form-group">
-                    ID Usuario : <h:inputText class="form-control" value="#{usuariosMBean.idusuario}" id="idus"></h:inputText><br></br>        
-                    Usuario : <h:inputText class="form-control"  value="#{usuariosMBean.usuario}" id="user"></h:inputText><br></br>
-                    Contraseña : <h:inputSecret class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputSecret>
-                    Nivel : <h:inputText class="form-control"  value="#{usuariosMBean.nivel}" id="txtlvl"></h:inputText>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="id">ID Usuario</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control" value="#{usuariosMBean.idusuario}" id="idus"></h:inputText><br></br>        
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="us">Usuario:</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{usuariosMBean.usuario}" id="user"></h:inputText><br></br>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="pw">Contraseña:</h:outputLabel> <h:inputSecret rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputSecret>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="id">Nivel: </h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{usuariosMBean.nivel}" id="txtlvl"></h:inputText>
                     <br></br><br></br>
-                    <h:commandButton class="btn btn-success" action="#{usuariosMBean.agregar()}" value="Agregar"></h:commandButton>
-                    <h:commandButton class="btn btn-info" action="#{usuariosMBean.modificar()}" value="Modificar"></h:commandButton>
-                    <h:commandButton class="btn btn-danger" action="#{usuariosMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
-                    <h:commandButton class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-success" action="#{usuariosMBean.agregar()}" value="Agregar"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-info" action="#{usuariosMBean.modificar()}" value="Modificar"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-danger" action="#{usuariosMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
                 </h:form>
             </div>
             
             
             <hr></hr>
+            <h4 style="color:orangered">Contenido de Tabla Departamentos</h4>
+            <hr></hr>
+
             
             <div style="width: 700px; position: relative;">
-                <h:dataTable class="table" value="#{usuariosMBean.tabla}" var="user">
+                <h:dataTable class="table table-dark" value="#{usuariosMBean.tabla}" var="user">
                     <h:column>
                         <f:facet name="header">ID USUARIO</f:facet>
                         <h:outputText value="#{user.idusuario}"></h:outputText>

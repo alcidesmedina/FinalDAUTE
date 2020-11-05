@@ -52,30 +52,32 @@
         </nav>
 
         <center>
-            <h2>Formulario Mantenimiento Tabla Empleados</h2><hr></hr>
+            <h:form rendered="#{sessionScope['level'] != 'Auditor'}"><h2>Formulario Mantenimiento Tabla Empleados</h2></h:form><hr></hr>
             
             <div style="width: 35%">
                 <h:form id="myForm" class="form-group">
-                    Código Empleado : <h:inputText class="form-control" value="#{empleadoMBean.codEmpleado}" id="codempl"></h:inputText><br></br>        
-                    Nombres : <h:inputText class="form-control"  value="#{empleadoMBean.nombres}" id="nomempl"></h:inputText><br></br>
-                    Apellidos : <h:inputText class="form-control"  value="#{empleadoMBean.apellidos}" id="apeempl"></h:inputText>
-                    ID Departamento : <h:inputText class="form-control"  value="#{empleadoMBean.idDepartamento}" id="iddepto"></h:inputText>
-                    Salario : <h:inputText class="form-control"  value="#{empleadoMBean.salario}" id="salario"></h:inputText>
-                    Edad : <h:inputText class="form-control"  value="#{empleadoMBean.edad}" id="edad"></h:inputText>
-                    ID Usuario : <h:inputText class="form-control"  value="#{empleadoMBean.idUsuario}" id="iduser"></h:inputText>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="cod">Código Empleado</h:outputLabel> <h:inputText readonly="#{facesContext.renderResponse}" rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control" value="#{empleadoMBean.codEmpleado}" id="codempl"></h:inputText><br></br>        
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="nom">Nombres:</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{empleadoMBean.nombres}" id="nomempl"></h:inputText><br></br>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="ape">Apellidos</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{empleadoMBean.apellidos}" id="apeempl"></h:inputText>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="iddept">ID Departamento:</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{empleadoMBean.idDepartamento}" id="iddepto"></h:inputText>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="sal">Salario:</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{empleadoMBean.salario}" id="salario"></h:inputText>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="ed">Edad:</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{empleadoMBean.edad}" id="edad"></h:inputText>
+                    <h:outputLabel rendered="#{sessionScope['level'] != 'Auditor'}" for="id">ID Usuario:</h:outputLabel> <h:inputText rendered="#{sessionScope['level'] != 'Auditor'}" class="form-control"  value="#{empleadoMBean.idUsuario}" id="iduser"></h:inputText>
                     <br></br><br></br>
-                    <h:commandButton class="btn btn-success" action="#{empleadoMBean.agregar()}" value="Agregar"></h:commandButton>
-                    <h:commandButton class="btn btn-info" action="#{empleadoMBean.modificar()}" value="Modificar"></h:commandButton>
-                    <h:commandButton class="btn btn-danger" action="#{empleadoMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
-                    <h:commandButton class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-success" action="#{empleadoMBean.agregar()}" value="Agregar"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-info" action="#{empleadoMBean.modificar()}" value="Modificar"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-danger" action="#{empleadoMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor'}" class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
                 </h:form>
             </div>
             
             
             <hr></hr>
+            <h4 style="color:orangered">Contenido de Tabla Empleados</h4>
+            <hr></hr>
             
             <div style="width: 700px; position: relative;">
-                <h:dataTable class="table" value="#{empleadoMBean.tabla}" var="empl">
+                <h:dataTable class="table table-dark" value="#{empleadoMBean.tabla}" var="empl">
                     <h:column>
                         <f:facet name="header">CODIGO EMPLEADO</f:facet>
                         <h:outputText value="#{empl.codEmpleado}"></h:outputText>
