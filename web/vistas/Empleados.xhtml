@@ -40,24 +40,7 @@
 
 <h:body rendered="#{sessionScope['username'] != 'temp'}">
 
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <h3 style="color: white">Mantenimiento de base de datos</h3>
-
-    <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0">     
-        
-      <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user-circle fa-fw"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#mantenimientoModal">Actualizar cuenta</a>  
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Salir</a>
-        </div>
-      </li>
-    </ul>
-  </nav>
 
     <div class="container-fluid">
         <div class="row">
@@ -65,6 +48,7 @@
     <div style="width: 10%; color: white">
         <ul class="sidebar navbar-nav bg-dark" style="height: 100%; font-size: 20px">
         <br></br>        
+        <br></br>
         <a href="#{request.contextPath}/faces/vistas/vistaDepartamentos.xhtml" class="badge badge-dark"><li>Departamentos</li></a>
         <a href="#{request.contextPath}/faces/vistas/vistaEmpleados.xhtml" class="badge badge-dark"><li>Empleados</li></a>
         <a href="#{request.contextPath}/faces/vistas/vistaTelefonos.xhtml" class="badge badge-dark"><li>Telefonos</li></a>
@@ -154,44 +138,6 @@
         </div>
         </footer>
     </div>
-  <!-- /#wrapper -->
-
-  <!-- Actualizar Cuenta Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea salir?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Seleccione "Salir" si desea terminar su sesion.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="#{request.contextPath}/faces/index.xhtml">Salir</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Salir Modal-->  
-  <div class="modal fade" id="mantenimientoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">¿Desea actualizar la informacion de su cuenta?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Seleccione "Actualizar" si desea cambiar su usuario o contraseña.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="#{request.contextPath}/faces/vistas/mantenimientoUsuario.xhtml">Actualizar</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </h:body>
 
 </html>
