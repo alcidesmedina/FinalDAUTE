@@ -24,7 +24,7 @@ import uml.exceptions.RollbackFailureException;
 
 /**
  *
- * @author andie
+ * @author jdmar
  */
 public class UsuariosJpaController implements Serializable {
 

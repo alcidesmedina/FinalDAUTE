@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author andie
+ * @author jdmar
  */
 @Named(value = "sessionUtils")
 @RequestScoped

@@ -15,7 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 /**
  *
- * @author andie
+ * @author jdmar
  */
 @Named(value = "usuariosMBean")
 @RequestScoped

@@ -22,7 +22,7 @@ import uml.exceptions.RollbackFailureException;
 
 /**
  *
- * @author andie
+ * @author jdmar
  */
 public class EmpleadoJpaController implements Serializable {
 

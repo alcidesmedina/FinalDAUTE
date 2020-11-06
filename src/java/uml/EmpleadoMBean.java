@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author andie
+ * @author jdmar
  */
 @Named(value = "empleadoMBean")
 @RequestScoped

@@ -23,7 +23,7 @@ import uml.exceptions.RollbackFailureException;
 
 /**
  *
- * @author andie
+ * @author jdmar
  */
 public class TelefonoJpaController implements Serializable {
 
