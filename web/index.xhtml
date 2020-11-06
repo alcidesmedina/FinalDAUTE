@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <meta charset="UTF-8"></meta>
+        <title>INICIO</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></link>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body rendered="#{sessionScope['username'] != 'temp'}">
+        <nav style="background-color:#0090b8" class="navbar navbar-expand navbar-light static-top">
+            <h:form style="margin-left: 4.5%">
+            <hr></hr>
+            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink style="color:white" action="#{usuariosMBean.logout}" value="Logout"></h:commandLink></p> 
+            <hr></hr>
+            </h:form>
+            
+        </nav>
+        
+        <br></br><br></br>
+            <h3 style="margin-left: 75px">BIENVENIDO A TU TABLERO PRINCIPAL</h3>
+         <hr></hr>
+         
+         <h:form>
+        <lable>
+            
+            <h:commandLink style="margin-left: 5%" class="btn btn-warning" action="#{telefonoMBean.sesion}" value="Mantenimiento Teléfonos"></h:commandLink>
+            
+            <h:commandLink rendered="#{sessionScope['level'] != 'Simple Usuario'}" style="margin-left: 5%" class="btn btn-primary" action="#{usuariosMBean.sesion()}" value="Mantenimiento Usuarios"></h:commandLink>
+            
+            <h:commandLink style="margin-left: 5%" class="btn btn-success" action="#{departamentosMBean.sesion}" value="Mantenimiento Departamentos"></h:commandLink>
+            
+            <h:commandLink style="margin-left: 5%" class="btn btn-info" action="#{empleadoMBean.sesion}" value="Mantenimiento Empleados"></h:commandLink>
+            
+            <br></br><br></br>
+            <br></br><br></br>
+            <br></br><br></br>
+            
+            <h:outputText style="margin-left: 5%" value="Cambiar usuario o contraseña         "></h:outputText>
+            <h:commandLink value="       Cambiar" action="#{usuariosMBean.sesion1()}"></h:commandLink>
+           
+        </lable>
+        </h:form> 
+         
+    </h:body>
+</html>
+

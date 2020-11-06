@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>USUARIOS</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></link>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
+        <script>
+            function cargar(id,us,contra,lvl)
+            {
+                document.getElementById('myForm:idus').value=id; 
+                document.getElementById('myForm:user').value=us; 
+                document.getElementById('myForm:contra').value=contra; 
+                document.getElementById('myForm:txtlvl').value=lvl; 
+            }
+            
+            function limpiar()
+            {
+                document.getElementById('myForm:idus').value= null; 
+                document.getElementById('myForm:user').value= null; 
+                document.getElementById('myForm:contra').value= null; 
+                document.getElementById('myForm:txtlvl').value=null; 
+            }
+        </script>
+    </h:head>
+
+    <h:body rendered="#{sessionScope['username'] != 'temp'}">
+        <nav style="background-color:#0090b8 " class="navbar navbar-expand navbar-light static-top">
+            
+            <h:form style="margin-left: 35%">
+            <hr></hr>
+            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink  style="color:white" action="#{telefonoMBean.indexsesion}" value="Home"></h:commandLink></p> 
+            <hr></hr>
+            </h:form>
+            
+        </nav>
+
+        <center>
+            <h:form><h2>Actualizar Credenciales</h2></h:form><hr></hr>
+            
+            <div style="width: 35%">
+                <h:form id="myForm" class="form-group">
+                    <h:outputLabel for="id">ID Usuario</h:outputLabel> <h:inputText readonly="#{facesContext.renderResponse}" class="form-control" value="#{usuariosMBean.idusuario}" id="idus"></h:inputText><br></br>        
+                    <h:outputLabel for="us">Usuario:</h:outputLabel> <h:inputText class="form-control"  value="#{usuariosMBean.usuario}" id="user"></h:inputText><br></br>
+                    <h:outputLabel for="pw">Contraseña:</h:outputLabel> <h:inputSecret  class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputSecret><br></br>
+                    <h:outputLabel for="id">Nivel: </h:outputLabel> <h:inputText readonly="#{facesContext.renderResponse}" class="form-control"  value="#{usuariosMBean.nivel}" id="txtlvl"></h:inputText>
+                    <br></br><br></br>
+                    
+                    <h:commandButton class="btn btn-info" action="#{usuariosMBean.modificar()}" value="Modificar"></h:commandButton><br></br><br></br>
+                    <h:commandButton class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
+                </h:form>
+            </div>
+            
+            
+            <hr></hr>
+            <h4 style="color:orangered">Contenido de Tabla Departamentos</h4>
+            <hr></hr>
+
+            
+            <div style="width: 700px; position: relative;">
+                <h:dataTable class="table table-dark" value="#{usuariosMBean.find()}" var="user">
+                    <h:column>
+                        <f:facet name="header">ID USUARIO</f:facet>
+                        <h:outputText value="#{user.idusuario}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">USUARIO</f:facet>
+                        <h:outputText value="#{user.usuario}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">CONTRASEÑA</f:facet>
+                        <h:outputText value="#{user.contra}"></h:outputText>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">NIVEL</f:facet>
+                        <h:outputText value="#{user.nivel}"></h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">SELECCIONAR</f:facet>
+                        <a href="javascript:cargar('#{user.idusuario}','#{user.usuario}','#{user.contra}','#{user.nivel}')">Get</a>
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </center>
+
+    </h:body>
+
+</html>
