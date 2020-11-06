@@ -6,14 +6,11 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>DEPARTAMENTOS</title>
-        
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></link>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>        
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+        <title>Departamentos</title>
         
         <script>
             function cargar(id,nom,cant,codtel)
@@ -34,19 +31,30 @@
         </script>
     </h:head>
 
-    <h:body rendered="#{sessionScope['username'] != 'temp'}">
-        <nav style="background-color:#0090b8 " class="navbar navbar-expand navbar-light static-top">
+<h:body rendered="#{sessionScope['username'] != 'temp'}">
+    <div class="container-fluid">
+        <div class="row">
+    <!-- Sidebar -->
+    <div style="width: 10%; color: white">
+        <ul class="sidebar navbar-nav bg-dark" style="height: 100%; font-size: 20px">
+        <br></br>        
+        <br></br>
+        <a href="#{request.contextPath}/faces/vistas/Departamento.xhtml" class="badge badge-dark"><li>Departamentos</li></a>
+        <a href="#{request.contextPath}/faces/vistas/Empleados.xhtml" class="badge badge-dark"><li>Empleados</li></a>
+        <a href="#{request.contextPath}/faces/vistas/Telefono.xhtml" class="badge badge-dark"><li>Telefonos</li></a>
+        <a href="#{request.contextPath}/faces/vistas/Usuarios.xhtml" class="badge badge-dark"><li>Usuarios</li></a>
+    </ul>
+    </div>
+<div style="width: 90%; text-align: center">
+<nav style="background-color:#0090b8 " class="navbar navbar-expand navbar-light static-top">
             
-            <h:form style="margin-left: 35%">
-            <hr></hr>
-            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink style="color:white" action="#{telefonoMBean.indexsesion}" value="Home"></h:commandLink></p> 
-            <hr></hr>
-            </h:form>
-            
-        </nav>
+            <h:form style="margin: auto">
+            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido/a <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink style="color:white" action="#{telefonoMBean.indexsesion}" value="Menu principal"></h:commandLink></p>
+            </h:form>            
+</nav>
 
-        <center>
-            <h:form rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}"><h2>Formulario Mantenimiento Tabla Departamentos</h2></h:form><hr></hr>
+    <center>
+<h:form rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}"><h3>Soporte de base de datos - DEPARTAMENTOS</h3></h:form><hr></hr>
             
             <div style="width: 35%">
                 <h:form id="myForm" class="form-group">
@@ -58,17 +66,11 @@
                     <h:commandButton rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="btn btn-success" action="#{departamentosMBean.agregar()}" value="Agregar"></h:commandButton>
                     <h:commandButton rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="btn btn-info" action="#{departamentosMBean.modificar()}" value="Modificar"></h:commandButton>
                     <h:commandButton rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="btn btn-danger" action="#{departamentosMBean.eliminar()}" value="Eliminar"></h:commandButton><br></br><br></br>
-                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
+                    <h:commandButton rendered="#{sessionScope['level'] != 'Auditor' and sessionScope['level'] != 'Simple Usuario'}" class="btn btn-secondary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
                 </h:form>
             </div>
-            
-            
-            <hr></hr>
-            <h4 style="color:orangered">Contenido de Tabla Departamentos</h4>
-            <hr></hr>
-            
-            <div style="width: 700px; position: relative;">
-                <h:dataTable class="table table-dark" value="#{departamentosMBean.tabla}" var="dept">
+
+            <h:dataTable class="table table-hover table-dark" value="#{departamentosMBean.tabla}" var="dept">
                     <h:column>
                         <f:facet name="header">ID DEPARTAMENTO</f:facet>
                         <h:outputText value="#{dept.idDepartamento}"></h:outputText>
@@ -91,12 +93,24 @@
 
                     <h:column>
                         <f:facet name="header">SELECCIONAR</f:facet>
-                        <a href="javascript:cargar('#{dept.idDepartamento}','#{dept.nombreDepto}','#{dept.cantEmpleados}','#{dept.codTels.codTels}')">Get</a>
+                        <a href="javascript:cargar('#{dept.idDepartamento}','#{dept.nombreDepto}','#{dept.cantEmpleados}','#{dept.codTels.codTels}')">
+                        <img src="recursos/edit.png" height="20px" /></a>
                     </h:column>
                 </h:dataTable>
-            </div>
-        </center>
+            
+    </center>
 
-    </h:body>
+</div>        
+</div>
+    <footer class="sticky-footer">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <br></br>
+        <span class="badge badge-info" style="font-size: 15px">Creado por Josue Martinez y Alcides Medina | DAUTE |2020</span>
+      </div>
+    </div>
+    </footer>
+</div>
+</h:body>
 
 </html>
