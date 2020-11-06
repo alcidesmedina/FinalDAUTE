@@ -7,15 +7,13 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-    <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>USUARIOS</title>
-        
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></link>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   <h:head>
+           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>        
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+        <title>INICIO</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         
         <script>
             
@@ -28,35 +26,54 @@
             }
         </script>
     </h:head>
-
-    <h:body>
-        <nav style="background-color:#0090b8 " class="navbar navbar-expand navbar-light static-top">
-            
-            <h:form style="margin-left: 32%">
+    <h:body rendered="#{sessionScope['username'] != 'temp'}">
+        <nav style="background-color:#000000" class="navbar navbar-expand navbar-light static-top">
+            <h:form style="margin-left: 35%">
             <hr></hr>
-            <p style="color:white; font-weight: bold; font-size: 20px;"> BIENVENIDOS A SU SISTEMA DE MANTENIMIENTO | <h:commandLink style="color:white" action="#{usuariosMBean.logout()}" value="Login"></h:commandLink></p> 
+            <p style="color:white; font-weight: bold; font-size: 20px;"> Bienvenido <h:outputText value="#{sessionScope['username']}"></h:outputText> (Nivel: <h:outputText value="#{sessionScope['level']}"></h:outputText>) | <h:commandLink style="color:white" action="#{usuariosMBean.logout}" value="Cerrar sesión"></h:commandLink></p> 
             <hr></hr>
             </h:form>
             
         </nav>
-
-        <center>
-            <h2>Crear Nueva Cuenta</h2><hr></hr>
-            
-            <div style="width: 35%">
-                <h:form id="myForm" class="form-group">
-                    ID Usuario : <h:inputText class="form-control" value="#{usuariosMBean.idusuario}" id="idus"></h:inputText><br></br>        
-                    Usuario : <h:inputText class="form-control"  value="#{usuariosMBean.usuario}" id="user"></h:inputText><br></br>
-                    Contraseña : <h:inputSecret class="form-control"  value="#{usuariosMBean.contra}" id="contra"></h:inputSecret><br></br>
-                    Nivel : <h:inputText a:value="Simple Usuario" readonly="#{facesContext.renderResponse}" class="form-control"  value="#{usuariosMBean.nivel}" id="txtlvl"></h:inputText>
-                    <br></br><br></br>
-                    <h:commandButton class="btn btn-success" action="#{usuariosMBean.agregar()}" value="Crear"></h:commandButton>
-                    <h:commandButton class="btn btn-primary" onclick="javascript:limpiar()" value="Limpiar Formulario"></h:commandButton>
-                </h:form>
-            </div>
-            
-        </center>
-
+        
+        <br></br><br></br>
+        <center> <h3 style="margin-left: 20px">BIENVENIDO A PANTALLA DE REPORTES</h3> </center>
+         <hr></hr>
+         
+         <h:form>
+                  <br></br>        
+        <br></br>  
+        <center> 
+       <br></br>
+            <h:commandLink style="center: 5%" class="btn btn-success" action="#{departamentosMBean.sesion}" value="CRUD DEPARTAMENTO"></h:commandLink><br></br>
+             <br></br>
+            <h:commandLink style="center: 5%" class="btn btn-info" action="#{empleadoMBean.sesion}" value="CRUD EMPLEADO"></h:commandLink><br></br>
+        <br></br>
+            <h:commandLink style="center: 5%" class="btn btn-warning" action="#{telefonoMBean.sesion}" value="CRUD TELEFONOS"></h:commandLink><br></br>      
+        <br></br>
+            <h:commandLink  rendered="#{sessionScope['level'] != 'Simple Usuario'}" style="margin-left: 0%" class="btn btn-primary" action="#{usuariosMBean.sesion()}" value="CRUD USUARIOS"></h:commandLink><br></br>
+             <br></br>        
+                
+       
+        </center> 
+            <br></br>        
+        <br></br>
+            <br></br><br></br>
+           
+            <h:outputText style="margin-left: 40%" value="Deseas cambiar Contraseña      "></h:outputText>
+            <h:commandLink value="Click Aqui!!" action="#{usuariosMBean.sesion1()}"></h:commandLink>
+           
+        
+        </h:form> 
+         
     </h:body>
-
+    <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <br></br>
+            <span class="badge badge-info" style="font-size: 15px">Creado por Josue Martinez y Alcides Medina | DAUTE |2020</span>
+          </div>
+        </div>
+        </footer>
 </html>
+
